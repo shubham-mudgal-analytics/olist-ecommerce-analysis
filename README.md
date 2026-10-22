@@ -56,7 +56,7 @@ An e-commerce marketplace wants to answer three questions:
 
 ### 5. The trend has incomplete periods
 
-- 2016 has very few orders: September 2016 = 1, October 2016 = 265, November 2016 = missing, December 2016 = 1.
+- 2016 has very few orders: September 2016 = 4, October 2016 = 324, November 2016 = missing, December 2016 = 1.
 - The monthly trend therefore starts in **January 2017**.
 - The monthly trend ends in **August 2018**. No delivered order with a delivery date appears after August 2018 in this data.
 
@@ -141,7 +141,7 @@ These are mistakes I made and fixed. They are listed here so the process is clea
 - **`review_score` is TINYINT.** `AVG()` returned whole numbers. Fixed by casting inside `AVG()`.
 - **`RowCount` is a reserved keyword** in SQL Server and caused a syntax error. Renamed to `TotalRows`.
 - **`MoM_Pct` overflowed** `DECIMAL(6,2)` in the first months (values above 1,000,000%). Widened to `DECIMAL(18,2)`.
-- **Partial months distort trends.** September and December 2016 have 1 order each, so month-over-month change is meaningless. The trend starts in January 2017.
+- **Partial months distort trends.** September 2016 has 4 orders, October 2016 has 324, November 2016 has none, and December 2016 has 1. The 2016 months are too thin, so month-over-month change is meaningless. The trend starts in January 2017.
 - **Power BI date type cut the time part.** `order_delivered_customer_date` was loaded as Date. Same-day late deliveries were marked as on time, and the late count was 6,534 instead of 7,826. Changing the column to Date/Time fixed it.
 - **Totals did not match at first** (96,470 vs 96,353). Reconciled using the missing-review count and the duplicate review rows.
 - **Revenue did not match Power BI** (13,181,027.13 vs 13,179,777.95 for 2017–2018). Traced to 8 delivered orders with no delivery date. Adding the delivery-date filter to the monthly query fixed the match. The month-by-month order counts drop by 8 in total after the filter, which matches the 8 orders.
