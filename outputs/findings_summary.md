@@ -9,7 +9,7 @@
 
 | # | Check | Expected | Result |
 |---|---|---|---|
-| 1 | Q2 revenue column sum = last running total | 13,179,777.95 | ✅ match |
+| 1 | Q2 revenue column sum, Jan 2017 to Aug 2018 | 13,179,777.95 | ✅ match |
 | 2 | Q3 top 8 revenue % sum | 54.5 | ✅ match |
 | 3 | Q4 reviews total / % total | 99,224 / 100 | ✅ match |
 | 4 | Q5 late % recalculated | 8.11% | ✅ match |
@@ -44,7 +44,7 @@
 
 ## FINDING 2 — Promise padding (delivery time)
 
-- Average promised time: **24.00 days** (Q5).
+- Average promised time: **24 days** (Q5).
 - Average actual time: **12.00 days per order** (Q5). Q1 shows **12.41 days per item**, because it counts item rows.
 - On-time rate is high because promised dates are generous, not only because logistics are fast.
 
@@ -68,7 +68,7 @@
 
 ## FINDING 5 — Trend window
 
-- Monthly trend covers **Jan 2017 to Aug 2018**. 2016 is excluded (very few orders).
+- Monthly trend covers **Jan 2017 to Aug 2018**. 2016 is excluded (very few orders): Sep 2016 = 4, Oct 2016 = 324, Nov 2016 = 0 (missing), Dec 2016 = 1 order (by purchase date).
 - Last month with delivered orders that have a delivery date: **Aug 2018** (838,576.64 BRL).
 - Monthly revenue for 2017–2018 totals **13,179,777.95 BRL**.
 
